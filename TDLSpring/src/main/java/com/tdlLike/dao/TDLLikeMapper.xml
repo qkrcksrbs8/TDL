@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+    
+<mapper namespace="tdlLike">  
+	<!-- 좋아요  -->
+  <insert id="insertLike" parameterType="likeCommand">
+      insert into TDL_LIKEY(TL_addrL,TL_addrC,TL_id,TL_PNUM)
+    	 values(#{TL_addrL},#{TL_addrC},#{TL_id},#{TL_PNUM})
+ </insert>
+    
+  <!--  좋아요 취소 --> 
+ <delete id="deleteLike" parameterType="likeCommand">
+    delete from TDL_LIKEY where TL_addrL=#{TP_addrL}
+ </delete> 
+  
+   <!-- 좋아요체크 -->
+ <select  id=" likeCheck" parameterType="likeCommand" resultType="likeCommand"  >
+    select TL_addrC from TDL_LIKEY where TL_id=#{TL_id} and TL_PNUM=#{TL_PNUM}
+</select>   
+
+</mapper>
+
+
+
+
+
+
+

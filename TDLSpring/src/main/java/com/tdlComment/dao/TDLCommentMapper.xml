@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+    
+<mapper namespace="tdlComment">  
+ 
+  <!--1.springboard2 테이블에서 SQL작업(1.글목록보기) -->
+<select  id="selectListC" parameterType="Integer" resultType="CommentCommand"  >
+    select * from TDL_POST_COMMENT where TPC_num=#{TPC_num}
+</select>     
+
+<!--2.검색어에 해당하는 총레코드수 구하기 java.lang.Integer->Integer->int-->
+ <select id="selectCountC" parameterType="Integer" resultType="Integer">
+    select count(*) from TDL_POST_COMMENT where TPC_num=#{TPC_num}
+ </select>
+ 
+   <!-- 최대값 구하기 -->
+ <select id="getNewNumC" resultType="int" parameterType="Integer" >
+    select max(TPC_ref) from TDL_POST_COMMENT where TPC_num=#{TPC_num}
+ </select>
+ 
+ 
+ <!-- 댓글작성  -->
+  <insert id="insertTDLComment" parameterType="CommentCommand">
+      insert into TDL_POST_COMMENT(TPC_addr,TPC_ref,TPC_num,TPC_id,TPC_content,TPC_date,TPC_step,TPC_level,TPC_good)
+    	 values(#{TPC_addr},#{TPC_ref},#{TPC_num},#{TPC_id},#{TPC_content},SYSDATE,#{TPC_step},0,0)
+ </insert>
+ 
+  <!--  글삭제하기 --> 
+ <delete id="deleteC" parameterType="String">
+    delete from TDL_POST_COMMENT where TPC_addr=#{TPC_addr}
+ </delete>
+ 
+ <!-- 좋아요  -->
+<update id="likeUp" parameterType="String">
+	update TDL_POST_COMMENT set TPC_good=TPC_good+1 where TPC_addr=#{TPC_addr}
+</update>
+
+<!-- 좋아요취소 -->
+<update id="likeDown" parameterType="String">
+	update TDL_POST_COMMENT set TPC_good=TPC_godd-1 where TPC_addr=#{TPC_addr}
+</update>
+
+</mapper>
+
+
+
+
+
+
+

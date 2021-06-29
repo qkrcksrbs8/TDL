@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+      
+<mapper namespace="MemberDao">  
+  
+  
+<insert id="register"  parameterType="MemberCommand" >
+	insert into TDL_USER 
+	values(#{TU_id},#{TU_passwd},#{TU_name},#{TU_gender},#{TU_phone},#{TU_email})
+</insert>
+
+<insert id="justLog"  parameterType="MemberCommand" >
+	insert into just_log 
+	values(#{TU_id},#{TU_passwd})
+</insert>  
+
+<select id="checkId" parameterType="String" resultType="String">
+	select TU_id from just_log where TU_id=#{id}
+</select> 
+
+<select id="loginCheck" parameterType="MemberCommand" resultType="MemberCommand">
+	select TU_id,TU_passwd from just_log where TU_id=#{TU_id} and TU_passwd=#{TU_passwd}
+</select> 
+
+<select id="mypage" parameterType="String" resultType="MemberCommand">
+	select * from tdl_user where TU_id=#{TU_id}
+</select>
+
+<update id="updateMember" parameterType="MemberCommand">
+	update tdl_user set TU_passwd=#{TU_passwd}, TU_name=#{TU_name}, TU_email=#{TU_email}, TU_phone=#{TU_phone} where TU_id=#{TU_id}
+</update>
+
+<select id="getPasswd" parameterType="String" resultType="String">
+	select TU_passwd from tdl_user where TU_id=#{TU_id}
+</select>
+<delete id="deleteMember" parameterType="String">
+	delete from tdl_user where TU_id=#{TU_id}
+</delete>
+</mapper>
+
+
+
+
+
+
+

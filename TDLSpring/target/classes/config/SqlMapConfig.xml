@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "HTTP://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		<typeAlias alias="TdlCommand" type="com.tdlPost.domain.TdlCommand"/>
+  		<typeAlias alias="CommentCommand" type="com.tdlComment.domain.CommentCommand"/>
+  		<typeAlias alias="likeCommand" type="com.tdlLike.domain.likeCommand"/>
+  		<typeAlias alias="MemberCommand" type="com.tdl.member.domain.MemberCommand"/>
+	</typeAliases>
+
+	<mappers>
+		<mapper resource="com/tdlPost/dao/TDLPostMapper.xml"/> 
+		<mapper resource="com/tdlComment/dao/TDLCommentMapper.xml"/> 
+		<mapper resource="com/tdlLike/dao/TDLLikeMapper.xml"/> 
+		<mapper resource="com/tdl/member/dao/MemberMapper.xml"/>
+	</mappers>
+</configuration>
