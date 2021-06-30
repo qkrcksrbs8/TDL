@@ -36,13 +36,10 @@ public class PostController {
 
 		//로그객체를 생성 ->매개변수전달,요청을 받아서 제대로 처리 -> 콘솔에 출력(디버깅용)
 		private Logger log=Logger.getLogger(this.getClass());//검사할 클래스명을 등록
-		
 		@Autowired
 		private TDLPostDAO TDLPostDAO;//byType을 이용해서 BoardDao 객체를 자동으로 의존성객체
-		
 		@Autowired
 		private TDLCommentDAO TDLCommentDAO;//댓글 DAO
-		
 		@Autowired
 		private TDLLikeDAO TDLLikeDAO;//좋아요 DAO
 		
@@ -73,7 +70,6 @@ public class PostController {
 		
 		//여기부터는 댓글
 		int TPC_num=TP_num;
-		 
 		int countC=TDLCommentDAO.getRowCountC(TPC_num);
 				 
 		List<CommentCommand> listC = null;
