@@ -46,28 +46,19 @@ public class PostController {
 		// 자유게시판 게시물
 		@RequestMapping("/TDLPostContent.do")
 		public ModelAndView process(@ModelAttribute("commandL") likeCommand commandL,BindingResult result,
-													@RequestParam(value="TP_num",defaultValue="1") int TP_num,
-													@RequestParam(value="TU_id",defaultValue="false") String TU_id, HttpServletRequest request) {
-		System.out.println("자유게시판 ContentController 시작");
-		System.out.println("TP_NUM=>"+TP_num);
+									@RequestParam(value="TP_num",defaultValue="1") int TP_num,
+									@RequestParam(value="TU_id",defaultValue="false") String TU_id, HttpServletRequest request) {
 		if(TP_num==1) {
-			System.out.println("TP_NUM=>"+TP_num);
-			TP_num=(Integer)request.getAttribute("TP_num");
-			
+			TP_num=(Integer)request.getAttribute("TP_num");	
 		}
 		if(TU_id=="false") {
 			TU_id=(String)request.getAttribute("TU_id");
 		}
-		//int seq=Integer.parseInt(request.getParameter("seq"));
-		if(log.isDebugEnabled()) {//로그객체가 작동중이라면(디버그상태)
-			log.debug("TP_num =>"+TP_num); //System.out.println("seq=>"+seq);
-		}
+
 		//1.조회수 증가
 		TDLPostDAO.updateHit(TP_num);
 		TdlCommand TDLPost=TDLPostDAO.selectTDLPost(TP_num);//int -> Integer
-		//글내용 \r\n aaaa \r\n -> 메서드로 구현 <pre></pre>
-		
-		
+
 		//여기부터는 댓글
 		int TPC_num=TP_num;
 		int countC=TDLCommentDAO.getRowCountC(TPC_num);
@@ -87,7 +78,6 @@ public class PostController {
 		commandL.setTL_id(TU_id);
 		commandL.setTL_PNUM(TP_num);
 		List<likeCommand> likeCheck=TDLLikeDAO.likeCheck(commandL);
-		
 		
 		/*
 		ModelAndView mav=new ModelAndView("boardView"); // ~ setViewName("boardView");
