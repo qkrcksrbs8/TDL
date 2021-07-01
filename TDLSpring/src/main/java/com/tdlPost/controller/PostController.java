@@ -44,6 +44,14 @@ public class PostController {
 		private TDLLikeDAO TDLLikeDAO;//좋아요 DAO
 		
 		// 자유게시판 게시물
+		/**
+		 * @param commandL
+		 * @param result
+		 * @param TP_num
+		 * @param TU_id
+		 * @param request
+		 * @return
+		 */
 		@RequestMapping("/TDLPostContent.do")
 		public ModelAndView process(@ModelAttribute("commandL") likeCommand commandL,BindingResult result,
 									@RequestParam(value="TP_num",defaultValue="1") int TP_num,
@@ -72,9 +80,6 @@ public class PostController {
 			System.out.println("댓글 ListController클래스의 count="+countC);
 		}
 		
-		//좋아요 체크
-		System.out.println("좋아요체크 아이디 =>"+TU_id);
-		System.out.println("좋아요체크 게시물번호 =>"+TU_id);
 		commandL.setTL_id(TU_id);
 		commandL.setTL_PNUM(TP_num);
 		List<likeCommand> likeCheck=TDLLikeDAO.likeCheck(commandL);
