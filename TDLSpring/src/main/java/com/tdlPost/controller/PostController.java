@@ -63,7 +63,7 @@ public class PostController {
 			TU_id=(String)request.getAttribute("TU_id");
 		}
 
-		//1.조회수 증가
+		//1.조회수 증가  -> 조회 수 하루에 1회만
 		TDLPostDAO.updateHit(TP_num);
 		TdlCommand TDLPost=TDLPostDAO.selectTDLPost(TP_num);//int -> Integer
 
