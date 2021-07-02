@@ -71,7 +71,7 @@ public class PostController {
 		int TPC_num=TP_num;
 		int countC=TDLCommentDAO.getRowCountC(TPC_num);
 				 
-		List<CommentCommand> listC = null;
+		List<CommentCommand> listC = null;//null 체크
 		if(countC > 0){
 			System.out.println("여기는 DAO 호출 countC =>"+countC);
 			listC = TDLCommentDAO.listC(TPC_num);
