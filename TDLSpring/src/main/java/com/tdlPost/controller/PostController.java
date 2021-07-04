@@ -133,24 +133,26 @@ public class PostController {
 		map.put("keyWord", keyWord);//검색어
 		
 		//총글의 갯수 또는 검색된 글의 갯수
-		int count=TDLPostDAO.getRowCount(map);	    
+		int recodeCount=TDLPostDAO.getRowCount(map);	    
+		String url = "TDLPostList.do";
+		int blockCount = 10;
+		int pageCount = 3;
 		//페이징 처리  1.현재페이지 2.총레코드수 3.페이지당 게시물수 4.블럭당 페이지수 5.요청명령어
-		PagingUtil page = new PagingUtil(currentPage, count, 10,3, "TDLPostList.do");	
-		//start->페이지당 맨 첫번째 나오는 게시물번호
+		PagingUtil page = new PagingUtil(currentPage, recodeCount, blockCount, pageCount, url);	
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());//마지막게시물번호
 		
 		List<TdlCommand> list = null;
-		if(count > 0){
+		if(recodeCount > 0){
 			System.out.println("여기는 DAO 호출");
 			list = TDLPostDAO.list(map);
 		}else{
 			list = Collections.emptyList();
-			System.out.println("ListController클래스의 count="+count);
+			System.out.println("ListController클래스의 count="+recodeCount);
 		}
 		ModelAndView  mav = new ModelAndView("TDLPostList");
 		mav.setViewName("TDL_POST/TDLPostList");//TDLPostList.jsp
-		mav.addObject("count", count);//총레코드수
+		mav.addObject("count", recodeCount);//총레코드수
 		mav.addObject("list", list);//레코드전체값
 		mav.addObject("pagingHtml", page.getPagingHtml());//링크문자열을 전달
 		System.out.println("자유게시판 끝");
