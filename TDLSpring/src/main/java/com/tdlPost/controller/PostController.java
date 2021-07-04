@@ -56,6 +56,8 @@ public class PostController {
 		public ModelAndView process(@ModelAttribute("commandL") likeCommand commandL,BindingResult result,
 									@RequestParam(value="TP_num",defaultValue="1") int TP_num,
 									@RequestParam(value="TU_id",defaultValue="false") String TU_id, HttpServletRequest request) {
+			
+		//초기값 설정	
 		if(TP_num==1) {
 			TP_num=(Integer)request.getAttribute("TP_num");	
 		}
