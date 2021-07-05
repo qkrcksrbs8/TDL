@@ -150,6 +150,7 @@ public class PostController {
 			list = Collections.emptyList();
 			System.out.println("ListController클래스의 count="+recodeCount);
 		}
+		
 		ModelAndView  mav = new ModelAndView("TDLPostList");
 		mav.setViewName("TDL_POST/TDLPostList");//TDLPostList.jsp
 		mav.addObject("count", recodeCount);//총레코드수
