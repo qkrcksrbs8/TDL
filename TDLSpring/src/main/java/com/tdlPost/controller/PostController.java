@@ -137,7 +137,8 @@ public class PostController {
 		String url = "TDLPostList.do";
 		int blockCount = 10;
 		int pageCount = 3;
-		//페이징 처리  1.현재페이지 2.총레코드수 3.페이지당 게시물수 4.블럭당 페이지수 5.요청명령어
+		
+		//페이징 처리  1.현재페이지 2.총레코드수 3.페이지당 게시물수 4.블럭당 페이지수 5.요청명령어 
 		PagingUtil page = new PagingUtil(currentPage, recodeCount, blockCount, pageCount, url);	
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());//마지막게시물번호
