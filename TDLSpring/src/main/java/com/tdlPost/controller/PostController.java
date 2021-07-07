@@ -186,6 +186,7 @@ public class PostController {
 		if(log.isDebugEnabled()) {//로그객체가 작동중이라면(디버그상태)
 			log.debug("TP_num =>"+TP_num); //System.out.println("seq=>"+seq);
 		}
+		
 		TDLPostDAO.selectTDLPost(TP_num);
 		TdlCommand TDLPost=TDLPostDAO.selectTDLPost(TP_num);
 		System.out.println("글 제목 => "+TDLPost.getTP_title());
