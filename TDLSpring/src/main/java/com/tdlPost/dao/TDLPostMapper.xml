@@ -7,7 +7,13 @@
 
   	<!--1.springboard2 테이블에서 SQL작업(1.글목록보기) -->
 	<select  id="selectList"  parameterType="map"  resultType="TdlCommand"  >
-    	SELECT  rnum, POST_TITLE, POST_ID, POST_CONTENT,created_date, READ_COUNT
+    	SELECT  
+    		  rnum
+    		, BOARD_TITLE
+    		, BOARD_NO
+    		, BOARD_DETAIL
+    		, CREATED_DATE
+    		, READ_COUNT
     	    FROM(SELECT
     		    a.*,
     		        rownum rnum
@@ -15,21 +21,21 @@
     				      FROM POST_MST
     		<where>
     		   <if test="keyWord!=null and keyField=='TP_title'">
-    		        POST_TITLE like '%' || #{keyWord} || '%'
+    		        BOARD_TITLE like '%' || #{keyWord} || '%'
     		   </if>
     		   <if test="keyWord!=null and keyField=='TP_id'">
-    		        POST_ID like '%' || #{keyWord} || '%'
+    		        BOARD_NO like '%' || #{keyWord} || '%'
     		   </if>
     		   <if test="keyWord!=null and keyField=='TP_content'">
-    		        POST_CONTENT like '%' || #{keyWord} || '%'
+    		        BOARD_DETAIL like '%' || #{keyWord} || '%'
     		   </if>
     		   <if test="keyWord!=null and keyField=='all'">
-    		        POST_TITLE like '%' || #{keyWord} || '%' or
-    		       	POST_ID like '%' || #{keyWord} || '%' or
-    		        POST_CONTENT like '%' || #{keyWord} || '%'
+    		        BOARD_TITLE like '%' || #{keyWord} || '%' or
+    		       	BOARD_NO like '%' || #{keyWord} || '%' or
+    		        BOARD_DETAIL like '%' || #{keyWord} || '%'
     		   </if>
     		</where>	
-    				ORDER BY POST_SEQ DESC
+    				ORDER BY BOARD_NO DESC
     			)a
     		)
 	<![CDATA[
