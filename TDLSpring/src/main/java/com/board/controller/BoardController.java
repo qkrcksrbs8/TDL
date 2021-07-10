@@ -153,7 +153,6 @@ public class BoardController {
 			//로그객체명.debug(출력대상자를 입력)
 		}
 			
-
 		//글쓰기 호출
 		TDLPostDAO.update(command);
 		System.out.println("자유게시판 글수정 TP_title =>"+command.getTP_title());
