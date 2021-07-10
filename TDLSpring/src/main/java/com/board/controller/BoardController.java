@@ -152,12 +152,12 @@ public class BoardController {
 			log.debug("TdlCommand=>"+command);//입력받은 값을 출력
 			//로그객체명.debug(출력대상자를 입력)
 		}
-		//유효성검사			
+			
 
-			//글쓰기 호출
-			TDLPostDAO.update(command);
-			System.out.println("자유게시판 글수정 TP_title =>"+command.getTP_title());
-			System.out.println("자유게시판 글수정 TP_content =>"+command.getTP_content());
+		//글쓰기 호출
+		TDLPostDAO.update(command);
+		System.out.println("자유게시판 글수정 TP_title =>"+command.getTP_title());
+		System.out.println("자유게시판 글수정 TP_content =>"+command.getTP_content());
 
 		//return "redirect:요청명령어"; =>return "이동할 페이지명"
 		return "redirect:/TDL_POST/TDLPostList.do";
