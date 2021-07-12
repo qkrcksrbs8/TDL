@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.tdlPost.dao.TDLPostDAO;
 import com.tdlPost.domain.TdlCommand;
 import com.tdlPost.util.PagingUtil;
+import com.board.VO.BoardVO;
 //댓글DB연결
 import com.tdlComment.dao.*;
 import com.tdlComment.domain.*;
@@ -42,6 +43,9 @@ public class BoardController {
 		private TDLCommentDAO TDLCommentDAO;//댓글 DAO
 		@Autowired
 		private TDLLikeDAO TDLLikeDAO;//좋아요 DAO
+		
+		@Autowired
+		private BoardVO boardVO;
 		
 		// 자유게시판 게시물
 		/**
