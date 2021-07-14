@@ -86,7 +86,7 @@ public class BoardController {
 			listC = Collections.emptyList();
 			System.out.println("댓글 ListController클래스의 count="+countC);
 		}
-		
+		  
 		commandL.setTL_id(TU_id);
 		commandL.setTL_PNUM(TP_num);
 		List<likeCommand> likeCheck=TDLLikeDAO.likeCheck(commandL);
