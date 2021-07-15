@@ -92,9 +92,6 @@ public class BoardController {
 		List<likeCommand> likeCheck=TDLLikeDAO.likeCheck(commandL);
 		
 		/*
-		ModelAndView mav=new ModelAndView("boardView"); // ~ setViewName("boardView");
-		mav.addObject("board",board); // request.setAttribute("board",board);
-		return mav;
 		*/  //1.이동할 페이지명 2.전달할 키명 3.전달할값
 		ModelAndView mav=new ModelAndView("TDLPostContent"); 
 		mav.setViewName("TDL_POST/TDLPostContent");
