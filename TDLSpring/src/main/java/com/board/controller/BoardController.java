@@ -108,12 +108,7 @@ public class BoardController {
 	   (@RequestParam(value="pageNum",defaultValue="1")int currentPage,
 	    @RequestParam(value="keyField",defaultValue="")String keyField,
 	    @RequestParam(value="keyWord",defaultValue="")String keyWord){
-		if(log.isDebugEnabled()){ //로그객체가 디버깅모드상태인지 아닌지를 체크
-			System.out.println("여기는 보드 list.do");
-			log.debug("currentPage : " + currentPage);//log.debug메서드 사용
-			log.debug("keyField : " + keyField);
-			log.debug("keyWord : " + keyWord);
-		}
+
 		//검색분야,검색어를 전달->parameteType="map"
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("keyField", keyField);//검색분야
