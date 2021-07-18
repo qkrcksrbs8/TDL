@@ -120,7 +120,7 @@ public class BoardController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("keyField", keyField);//검색분야
 		map.put("keyWord", keyWord);//검색어
-		
+		   
 		//총글의 갯수 또는 검색된 글의 갯수
 		int recodeCount=TDLPostDAO.getRowCount(map);	    
 		String url = "TDLPostList.do";
