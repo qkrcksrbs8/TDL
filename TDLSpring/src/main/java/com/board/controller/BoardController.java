@@ -103,6 +103,13 @@ public class BoardController {
 	}
 		
 	
+	/**
+	 * 게시판 조회
+	 * @param currentPage
+	 * @param keyField
+	 * @param keyWord
+	 * @return
+	 */
 	@RequestMapping("/TDLPostList.do")
 	public ModelAndView process
 	   (@RequestParam(value="pageNum",defaultValue="1")int currentPage,
