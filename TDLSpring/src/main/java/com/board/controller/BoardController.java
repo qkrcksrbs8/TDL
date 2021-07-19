@@ -23,6 +23,7 @@ import com.tdlPost.dao.TDLPostDAO;
 import com.tdlPost.domain.TdlCommand;
 import com.tdlPost.util.PagingUtil;
 import com.board.VO.BoardVO;
+import com.board.dao.BoardDAO;
 //댓글DB연결
 import com.tdlComment.dao.*;
 import com.tdlComment.domain.*;
@@ -46,6 +47,9 @@ public class BoardController {
 		
 		@Autowired
 		private BoardVO boardVO;
+		
+		@Autowired
+		private BoardDAO boardDAO;
 		
 		// 자유게시판 게시물
 		/**
