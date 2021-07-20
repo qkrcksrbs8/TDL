@@ -4,13 +4,14 @@
 
 <configuration>
 	<typeAliases>
-		<typeAlias alias="TdlCommand" type="com.tdlPost.domain.TdlCommand"/>
-  		<typeAlias alias="CommentCommand" type="com.tdlComment.domain.CommentCommand"/>
-  		<typeAlias alias="likeCommand" type="com.tdlLike.domain.likeCommand"/>
-  		<typeAlias alias="MemberCommand" type="com.tdl.member.domain.MemberCommand"/>
+		<typeAlias alias="TdlCommand" 		type="com.tdlPost.domain.TdlCommand"/>
+  		<typeAlias alias="CommentCommand" 	type="com.tdlComment.domain.CommentCommand"/>
+  		<typeAlias alias="likeCommand" 		type="com.tdlLike.domain.likeCommand"/>
+  		<typeAlias alias="MemberCommand" 	type="com.tdl.member.domain.MemberCommand"/>
 	</typeAliases>
 
 	<mappers>
+		<mapper resource="sql/board/boardMapper.xml"/> 
 		<mapper resource="com/tdlPost/dao/TDLPostMapper.xml"/> 
 		<mapper resource="com/tdlComment/dao/TDLCommentMapper.xml"/> 
 		<mapper resource="com/tdlLike/dao/TDLLikeMapper.xml"/> 

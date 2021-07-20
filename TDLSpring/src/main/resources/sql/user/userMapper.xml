@@ -3,44 +3,17 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
     
-<mapper namespace="tdlPost">  
+<mapper namespace="tdlBoard">  
 
   	<!--1.springboard2 테이블에서 SQL작업(1.글목록보기) -->
-	<select  id="selectList"  parameterType="map"  resultType="TdlCommand"  >
+	<select id="boardList" parameterType="map" resultType="BoardVO">
     	SELECT  
-    		  rnum
-    		, BOARD_TITLE
-    		, BOARD_NO
-    		, BOARD_DETAIL
-    		, CREATED_DATE
-    		, READ_COUNT
-    	    FROM(SELECT
-    		    a.*,
-    		        rownum rnum
-    		FROM (SELECT   *
-    				      FROM POST_MST
-    		<where>
-    		   <if test="keyWord!=null and keyField=='TP_title'">
-    		        BOARD_TITLE like '%' || #{keyWord} || '%'
-    		   </if>
-    		   <if test="keyWord!=null and keyField=='TP_id'">
-    		        BOARD_NO like '%' || #{keyWord} || '%'
-    		   </if>
-    		   <if test="keyWord!=null and keyField=='TP_content'">
-    		        BOARD_DETAIL like '%' || #{keyWord} || '%'
-    		   </if>
-    		   <if test="keyWord!=null and keyField=='all'">
-    		        BOARD_TITLE like '%' || #{keyWord} || '%' or
-    		       	BOARD_NO like '%' || #{keyWord} || '%' or
-    		        BOARD_DETAIL like '%' || #{keyWord} || '%'
-    		   </if>
-    		</where>	
-    				ORDER BY BOARD_NO DESC
-    			)a
-    		)
-	<![CDATA[
-		WHERE rnum >= #{start} AND rnum <= #{end}
-	]]>
+    		  '제목 테스트' AS BOARD_TITLE
+    		, '1' AS BOARD_NO
+    		, '상세내용' AS BOARD_DETAIL
+    		, SYSDATE AS CREATED_DATE
+    		, '10' AS READ_COUNT
+    	    FROM DUAL
  	</select>  
 
 <!--2.검색어에 해당하는 총레코드수 구하기 java.lang.Integer->Integer->int-->

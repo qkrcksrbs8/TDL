@@ -9,7 +9,7 @@
 		</layout>
 	</appender>
 
-	<category name="com.tdlPost" additivity="false">
+	<category name="com.board" additivity="false">
 		<priority value="debug" />
 		<appender-ref ref="STDOUT" />
 	</category>

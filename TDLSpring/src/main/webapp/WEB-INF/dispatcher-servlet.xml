@@ -12,28 +12,8 @@
 <!-- @Autowired 사용을 위해 -->
     <context:annotation-config/> 
     <mvc:annotation-driven />
-    <!-- 컨트롤러 자동스캔
-      <context:component-scan base-package="com.tdlPost" /> 컨트롤러 클래스를 일일이 작성
-                                                                                          하지 않아도 된다.
-      -->
-    <!-- 멤버관리 -->
-    <bean class="com.tdl.member.dao.MemberDaoImpl"/>
-    <bean class="com.tdl.member.controller.MemberController"/>
-    
-    <!-- 자유게시판 -->
-    <bean class="com.tdlPost.dao.TDLPostDAOImpl" />
-    <bean class="com.tdlPost.controller.PostController" />
-
-	<!-- 댓글 -->	
-	<bean class="com.tdlComment.dao.TDLCommentDAOImpl" />	
-	<bean class="com.tdlComment.controller.WriterController" />
-	<bean class="com.tdlComment.controller.DeleteController" />	
-		
-	<!-- 좋아요 -->
-	<bean class="com.tdlLike.dao.TDLLikeDAOImpl" />	
-	<bean class="com.tdlLike.controller.WriterController" />
-	<bean class="com.tdlLike.controller.DeleteController" />
-    <!-- (4) viewResolver(위치)(prefix), 이동할페이지의 확장자를 지정(suffix) -->
+    <context:component-scan base-package="com.board.*, com.baord.dao.BoardDAO" />
+      
 <bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />

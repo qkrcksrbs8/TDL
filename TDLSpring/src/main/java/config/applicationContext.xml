@@ -47,13 +47,8 @@
     (sqlSession객체를 더 쉽게 얻어오기 위해서 설정)-->
  <bean id="sqlSessionTemplate"
            class="org.mybatis.spring.SqlSessionTemplate">
-          <constructor-arg index="0" ref="sqlSessionFactory" />
+          <constructor-arg index="0" ref="sqlSessionFactory"/>
  </bean>
-
-
-
-
-
 
 	
 </beans>
