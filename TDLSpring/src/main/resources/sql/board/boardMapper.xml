@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+    
+<mapper namespace="boardMapper">  
+
+  	<!--1.springboard2 테이블에서 SQL작업(1.글목록보기) -->
+	<select id="boardList" parameterType="map" resultType="map">
+    	SELECT  
+    		  '제목 테스트' AS BOARD_TITLE
+    		, '1' AS BOARD_NO
+    		, '상세내용' AS BOARD_DETAIL
+    		, SYSDATE AS CREATED_DATE
+    		, '10' AS READ_COUNT
+    	    FROM DUAL
+ 	</select>  
+
+<!--2.검색어에 해당하는 총레코드수 구하기 java.lang.Integer->Integer->int-->
+ <select id="boardCount" parameterType="map" resultType="Integer">
+    select 5 from DUAL
+ </select>
+ 
+  <!-- 최대값 구하기 -->
+ <select id="getNewNumP" resultType="int" >
+    select max(TP_num) from TDL_POST
+ </select>
+ 
+ <!--3.글쓰기(sysdate, mysql(now())  com.board.domain.BoardCommand
+    #{매개변수명(=테이블의 필드명=멤버변수명}=>Getter Method호출하는 문장이다. 
+   -->
+ <insert id="insertTDLPost" parameterType="TdlCommand">
+      insert into TDL_POST(TP_num,TP_title,TP_id,TP_date,TP_content,TP_readcount)
+    	 values(#{TP_num},#{TP_title},'test',SYSDATE,#{TP_content},0)
+ </insert>
+ 
+  <!--4.조회수 증가하기 java.lang.String=>String->string(X) -->
+ <update id="updateHit" parameterType="Integer" >
+    update TDL_POST set TP_readcount=TP_readcount+1 where TP_num=#{TP_num}
+ </update>
+ 
+<!--  5. 게시물번호에 따른 레코드 상세보기 -->
+ <select id="selectTDLPost" parameterType="Integer"  resultType="TdlCommand">
+     select * from TDL_POST where TP_num=#{TP_num}
+ </select>
+ 
+ <!--  6.글삭제하기 --> 
+ <delete id="delete" parameterType="Integer">
+    delete from TDL_POST where TP_num=#{TP_num}
+ </delete>
+ 
+ <!-- 7.글수정하기 -->
+ <update id="updatePost" parameterType="TdlCommand">
+    update TDL_POST set TP_title=#{TP_title} ,TP_content=#{TP_content}
+    where TP_num=#{TP_num}
+ </update>
+ 
+ 
+
+</mapper>
+
+
+
+
+
+
+
