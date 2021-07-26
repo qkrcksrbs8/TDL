@@ -6,7 +6,7 @@ import java.util.Map;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class BoardDAO  {
+public class BoardDAO {
 
 	@Autowired
 	SqlSessionDaoSupport SqlSession;
